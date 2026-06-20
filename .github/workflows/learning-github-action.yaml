@@ -9,15 +9,21 @@ jobs:
     steps:
       - name: Checkout source code onto runner
         uses: actions/checkout@v6
+
       - name: Install Nodejs 
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'yarn'
+
       - name: enable corepack to manage yarn by Nodejs
         run: corepack enable
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
       - name: Build NuxtJs App
         run: yarn build
-        run: echo "CI completed"
+      
+      - name: Complete
+        run: echo "CI done."
