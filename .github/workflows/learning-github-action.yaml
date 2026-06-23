@@ -44,9 +44,8 @@ jobs:
           yarn install --frozen-lockfile
           yarn build
           pm2 restart ecommerce-ui
-          pm2 log ecommerce-ui 
           pm2 list
-          logout
+          EOF
 
       - name: Done
         run: echo "Deployment completed."
