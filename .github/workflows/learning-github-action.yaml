@@ -36,6 +36,18 @@ jobs:
         run: |
           ssh -p ${{secrets.VPS_PORT}} \
           ${{secrets.VPS_USER}}@${{secrets.VPS_HOST}} << 'EOF'
-          ls -l
+          cd cd admin-ui-ecommerce/
+          git branch 
+          git pull origin main 
+          yarn install --frozen-lockfile
+          yarn build
+      
+      - name: Restart PM2 process
+        run: |
+          pm2 restart ecommerce-ui
+          pm2 log ecommerce-ui 
+          pm2 list
+          logout
+
       - name: Done
         run: echo "Deployment completed."
