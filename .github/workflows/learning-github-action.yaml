@@ -1,5 +1,5 @@
-name: learn github action
-run-name: ${{github.actor}} is learning github action
+name: Deply Admin UI
+run-name: ${{github.actor}} is trying to deploy to VPS
 on:
   push:
     branches: [main]
