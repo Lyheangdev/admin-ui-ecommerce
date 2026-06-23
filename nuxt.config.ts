@@ -8,8 +8,7 @@ export default defineNuxtConfig({
   vite: {
     plugins : [tailwindcss()]
   },
-
-  modules: ['nuxt-svgo'],
+  modules: ['nuxt-svgo', '@nuxt/image'],
   svgo : {
     dts: true,
     autoImportPath: false,
