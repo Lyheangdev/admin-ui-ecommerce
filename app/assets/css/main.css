@@ -7,6 +7,7 @@
   /* animation */
   --animate-slide-right: slide-right 300ms ease-out;
   --color-bg-primary: #080616;
+  --color-bg-secondary: #0F0E0E;
 
   @keyframes slide-right {
     from {
