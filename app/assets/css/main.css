@@ -6,7 +6,7 @@
 @theme {
   /* animation */
   --animate-slide-right: slide-right 300ms ease-out;
-  --color-bg-primary: #1D1616;
+  --color-bg-primary: #080616;
 
   @keyframes slide-right {
     from {
