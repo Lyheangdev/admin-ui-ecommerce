@@ -37,8 +37,7 @@ jobs:
           ssh -p ${{secrets.VPS_PORT}} \
           ${{secrets.VPS_USER}}@${{secrets.VPS_HOST}} << 'EOF'
           cd admin-ui-ecommerce/
-          git branch 
-          git pull origin main 
+          git pull
           yarn install --frozen-lockfile
           yarn build
       
