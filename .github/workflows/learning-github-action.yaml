@@ -38,6 +38,7 @@ jobs:
           ${{secrets.VPS_USER}}@${{secrets.VPS_HOST}} << 'EOF'
           cd admin-ui-ecommerce/
           git pull
+          yarn -v
           yarn install --frozen-lockfile
           yarn build
       
