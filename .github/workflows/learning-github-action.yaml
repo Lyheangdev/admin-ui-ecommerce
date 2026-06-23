@@ -25,5 +25,17 @@ jobs:
       - name: Build NuxtJs App
         run: yarn build
       
-      - name: Complete
-        run: echo "CI done."
+      - name: Set up SSH on current runner
+        run: |
+          mkdir -p ~/.ssh 
+          echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_ed25519
+          chomod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{secrets.VPS_HOST}} > ~/.ssh/known_hosts
+
+      - name: Deploy to VPS 
+        run: |
+          ssh -p ${{secrets.VPS_PORT}} \
+          ${{secrets.VPS_USER}}@${{secrets.VPS_HOST}} << 'EOF'
+          ls -l
+      - name: Done
+        run: echo "Deployment completed."
