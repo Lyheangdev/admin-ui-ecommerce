@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
 jobs:
-  do-something-smart:
+  deploy-nuxt-to-vps:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code onto runner
