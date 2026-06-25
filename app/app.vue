@@ -1,21 +1,21 @@
 <template>
   <main data-theme="light"
-    class="flex w-screen h-screen bg-gray-100 dark:bg-black/90 py-2 px-2 transition-colors duration-300 ease-out m-0!">
-    <div class="flex flex-col gap-3 w-[240px] max-w-[240px]">
-      <nav class="relative grow flex flex-col pt-5 px-4 bg-white dark:bg-bg-secondary border border-black/8 dark:border-white/8 rounded-xl">
+    class="flex w-screen h-screen bg-gray-100 dark:bg-black/90 p-1.5 transition-colors duration-300 ease-out m-0!">
+    <div class="flex flex-col gap-3 w-[250px] max-w-[250px]">
+      <nav class="relative grow flex flex-col pt-3 px-4 bg-white dark:bg-bg-secondary border border-black/8 dark:border-white/8 rounded-2xl">
         <!-- Brand Logo -->
-        <section>
-          <div class="flex items-center gap-3 pb-5">
+        <section class="bg-black/2 border border-black/3 dark:border-white/3 dark:bg-white/2 rounded-xl">
+          <div class="flex items-center gap-3 px-3 py-4">
             <IconSVI class="text-blue-900 h-8! w-10!" />
             <div>
               <h5 class="text-gray-800 text-sm font-medium dark:text-white leading-snug">SVI HR System</h5>
-              <p class="text-[10px] dark:text-gray-300 font-light leading-snug">Fast, modern</p>
+              <p class="text-[10px] dark:text-gray-300 font-light leading-snug">Fast, modern plaform</p>
             </div>
           </div>
         </section>
 
         <!-- Feature Section -->
-        <section class="pt-5">
+        <section class="pt-6">
           <h5 class="text-gray-400 uppercase text-xs font-semibold">Overview</h5>
           <ul class="py-3 flex flex-col gap-1">
             <NuxtLink v-for="m in featureMenu" :key="m.name" :href="m.route">
