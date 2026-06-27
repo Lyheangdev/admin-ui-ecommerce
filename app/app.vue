@@ -1,6 +1,6 @@
 <template>
   <main data-theme="light"
-    class="flex w-screen h-screen bg-gray-100 dark:bg-black/90 p-1.5 transition-colors duration-300 ease-out m-0!">
+    class="flex w-screen h-screen bg-gray-100 dark:bg-black/90 p-1.5 transition-colors duration-200 ease-out m-0!">
     <div class="flex flex-col gap-3 w-[250px] max-w-[250px]">
       <nav class="relative grow flex flex-col pt-3 px-4 bg-white dark:bg-bg-secondary border border-black/8 dark:border-white/8 rounded-2xl">
         <!-- Brand Logo -->
@@ -83,11 +83,34 @@
             class="font-light text-gray-400">1.0.0</span></p>
       </div>
     </div>
-    <!-- <button class="py-1 px-2 rounded-lg cursor-pointer bg-amber-500/15 dark:bg-amber-500/10 flex items-center gap-2" @click="handleToggleTheme">
-        <IconLight v-if="themeMode=='light'" class="stroke-amber-500 dark:stroke-white text-transparent size-6!" />
-        <IconDark v-else class="size-6! text-white" />
-        <span class="text-xs font-medium dark:text-amber-500">{{ themeMode === 'light' ? 'Light Mode' : 'Dark Mode' }}</span>
-      </button> -->
+
+    <div class="flex-1 pl-3 pr-1 py-1">
+      <!-- Toolbar -->
+     <div class="w-full flex items-center justify-between">
+        <button class="cursor-pointer flex items-center gap-1 bg-white dark:bg-black pr-2.5 pl-1 pb-0.5 pt-1 rounded-lg border border-gray-200 dark:border-white/8" @click="$router.back">
+          <IconChevrontLeft class="size-6! bg-black/8 dark:bg-white/10 rounded-md text-bg-secondary dark:text-white"/>
+          <span class="text-gray-600 dark:text-gray-100 text-xs leading-tight mb-0.5">
+            Back
+          </span>
+        </button>
+
+        <div class="flex items-center">
+          <div class="flex items-center gap-1.5">
+            <button class="bg-white dark:bg-black size-10 flex items-center justify-center rounded-full border border-black/15 dark:border-white/15">
+              <IconSearch class="size-5! text-white" filled />
+            </button>
+            <button class="bg-white dark:bg-black size-10 flex items-center justify-center rounded-full border border-black/15 dark:border-white/15">
+              <IconNotification class="size-6! text-bg-secondary dark:text-white" />
+            </button>
+          </div>
+
+         <button class="flex items-center gap-1 px-1.5 pt-1.5 pb-1 rounded-lg">
+          <IconLogout class="size-6! text-bg-secondary dark:text-white" />
+         <span class="text-sm text-gray-600 dark:text-gray-100 mb-1"> Logout</span>
+         </button>
+        </div>
+     </div>
+    </div>
   </main>
 </template>
 
@@ -102,6 +125,10 @@ import IconDoc from '~/assets/icons/doc.svg';
 import IconUser from '~/assets/icons/user.svg';
 import IconKeys from '~/assets/icons/keys.svg';
 import IconSetting from '~/assets/icons/setting-config.svg';
+import IconChevrontLeft from '~/assets/icons/chevron.svg';
+import IconLogout from '~/assets/icons/logout.svg';
+import IconNotification from '~/assets/icons/notification.svg';
+import IconSearch from '~/assets/icons/search.svg';
 
 import { capitalize } from 'vue';
 

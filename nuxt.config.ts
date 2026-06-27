@@ -12,6 +12,6 @@ export default defineNuxtConfig({
   svgo : {
     dts: true,
     autoImportPath: false,
-    componentPrefix: 'Icon'
+    componentPrefix: 'Icon',
   }
 })
