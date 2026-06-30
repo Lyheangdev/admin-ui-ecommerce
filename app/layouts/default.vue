@@ -1,6 +1,5 @@
 <template>
   <main
-    data-theme="light"
     class="flex w-screen h-screen bg-gray-100 dark:bg-black/90 p-1.5 transition-colors duration-200 ease-out m-0!"
   >
     <div class="flex flex-col gap-3 w-[250px] max-w-[250px]">
@@ -148,9 +147,7 @@
           <button class="cursor-pointer bg-black/3 dark:bg-white/8 px-1.5 py-1 rounded-full">
             <IconServer class="size-6! text-bg-secondary dark:text-white" />
           </button>
-          <button class="cursor-pointer bg-black/3 dark:bg-white/8 px-1.5 py-1 rounded-full">
-            <IconNotification class="size-6! text-bg-secondary dark:text-white" />
-          </button>
+          <NotificationBell />
           <LocaleSwitcher />
           <div class="w-px h-7 bg-black/15 dark:bg-white/25" />
           <button
@@ -180,12 +177,12 @@ import IconUser from '~/assets/icons/user.svg';
 import IconKeys from '~/assets/icons/keys.svg';
 import IconSetting from '~/assets/icons/setting-config.svg';
 import IconLogout from '~/assets/icons/logout.svg';
-import IconNotification from '~/assets/icons/notification.svg';
 import IconServer from '~/assets/icons/server.svg';
 
 import packageJson from '../../package.json';
 
 import { capitalize } from 'vue';
+import NotificationBell from '~/components/NotificationBell.vue';
 
 const VERSION = packageJson.version;
 
@@ -193,6 +190,12 @@ type ThemeMode = 'light' | 'dark';
 const themeMode = ref<ThemeMode>('light');
 
 const route = useRoute();
+
+useHead({
+  htmlAttrs: {
+    'data-theme': themeMode,
+  },
+});
 
 const featureMenu = [
   {
@@ -252,12 +255,12 @@ onMounted(() => {
 watch(
   themeMode,
   (mode) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('themeMode', mode);
-      const main = document.querySelector('main');
-      if (!main) return;
-      main.setAttribute('data-theme', themeMode.value);
-    }
+    // if (typeof window !== 'undefined') {
+    //   localStorage.setItem('themeMode', mode);
+    //   const main = document.querySelector('html');
+    //   if (!main) return;
+    //   main.setAttribute('data-theme', themeMode.value);
+    // }
   },
   { immediate: true }
 );
