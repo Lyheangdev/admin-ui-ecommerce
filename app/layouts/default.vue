@@ -133,33 +133,31 @@
       <div class="px-4 flex justify-center items-center">
         <p class="text-xs text-gray-900 dark:text-gray-50">
           <span class="font-semibold">Version</span>
-          <span class="font-light text-gray-400">1.0.0</span>
+          <span class="font-light text-gray-400 ml-1.5">{{ VERSION }}</span>
         </p>
       </div>
     </div>
 
-    <div class="flex-1 pl-3 pr-1 py-1 flex flex-col">
+    <div class="flex-1 pl-3 pr-1 py-2 flex flex-col">
       <!-- Toolbar -->
-      <div class="w-full flex items-center justify-between">
+      <div
+        class="w-full flex items-center justify-between border-b pb-2.5 border-black/10 dark:border-white/10"
+      >
         <Breadcrumb />
-
-        <div class="flex items-center">
-          <div class="flex items-center gap-1.5">
-            <button
-              class="bg-white dark:bg-black size-10 flex items-center justify-center rounded-full border border-black/15 dark:border-white/15"
-            >
-              <IconSearch class="size-5! text-white" filled />
-            </button>
-            <button
-              class="bg-white dark:bg-black size-10 flex items-center justify-center rounded-full border border-black/15 dark:border-white/15"
-            >
-              <IconNotification class="size-6! text-bg-secondary dark:text-white" />
-            </button>
-          </div>
-
-          <button class="flex items-center gap-1 px-1.5 pt-1.5 pb-1 rounded-lg">
-            <IconLogout class="size-6! text-bg-secondary dark:text-white" />
-            <span class="text-sm text-gray-600 dark:text-gray-100 mb-1">Logout</span>
+        <div class="flex items-center gap-2.5 rounded-lg">
+          <button class="cursor-pointer bg-black/3 dark:bg-white/8 px-1.5 py-1 rounded-full">
+            <IconServer class="size-6! text-bg-secondary dark:text-white" />
+          </button>
+          <button class="cursor-pointer bg-black/3 dark:bg-white/8 px-1.5 py-1 rounded-full">
+            <IconNotification class="size-6! text-bg-secondary dark:text-white" />
+          </button>
+          <LocaleSwitcher />
+          <div class="w-px h-7 bg-black/15 dark:bg-white/25" />
+          <button
+            class="cursor-pointer flex items-center gap-1 rounded-lg border border-red-500 px-2 py-0.5"
+          >
+            <IconLogout class="size-6! text-red-600 mt-1" />
+            <span class="text-[13px] text-red-600 mb-1 leading-snug mt-1">Logout</span>
           </button>
         </div>
       </div>
@@ -183,9 +181,13 @@ import IconKeys from '~/assets/icons/keys.svg';
 import IconSetting from '~/assets/icons/setting-config.svg';
 import IconLogout from '~/assets/icons/logout.svg';
 import IconNotification from '~/assets/icons/notification.svg';
-import IconSearch from '~/assets/icons/search.svg';
+import IconServer from '~/assets/icons/server.svg';
+
+import packageJson from '../../package.json';
 
 import { capitalize } from 'vue';
+
+const VERSION = packageJson.version;
 
 type ThemeMode = 'light' | 'dark';
 const themeMode = ref<ThemeMode>('light');

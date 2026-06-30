@@ -11,7 +11,7 @@
       <IconChevron class="rotate-180 size-4! text-gray-400" />
       <NuxtLink
         :href="path.link || ''"
-        class="text-[12px] leading-snug hover:text-gray-500 dark:hover:text-gray-500 duration-300"
+        class="text-[13px] leading-snug hover:text-gray-500 hover:scale-105 dark:hover:text-gray-500 duration-300"
         :class="[
           'text-gray-400',
           'dark:text-gray-400',
