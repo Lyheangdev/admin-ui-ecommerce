@@ -23,59 +23,7 @@
           </div>
         </section>
 
-        <!-- Feature Section -->
-        <section class="pt-6">
-          <h5 class="text-gray-400 uppercase text-xs font-semibold">Overview</h5>
-          <ul class="py-3 flex flex-col gap-1">
-            <NuxtLink v-for="m in featureMenu" :key="m.name" :href="m.route">
-              <li
-                class="cursor-pointer w-full rounded-lg py-2 px-3 flex items-center gap-2.5 hover:bg-white/10 duration-300 ease-out"
-                :class="{
-                  'bg-gray-100 dark:bg-white/10': m.route.toLowerCase() == route.path.toLowerCase(),
-                }"
-              >
-                <component
-                  :is="m.icon"
-                  class="size-5! text-gray-700 dark:text-white"
-                  :class="{ 'text-blue-700!': m.route.toLowerCase() == route.path.toLowerCase() }"
-                />
-                <span
-                  class="text-xs font-normal text-gray-800 dark:text-gray-200 leading-snug"
-                  :class="{ 'font-semibold': m.route.toLowerCase() == route.path.toLowerCase() }"
-                >
-                  {{ capitalize(m.name) }}
-                </span>
-              </li>
-            </NuxtLink>
-          </ul>
-        </section>
-
-        <!-- System Section -->
-        <section class="pt-5">
-          <h5 class="text-gray-400 uppercase text-xs font-semibold">System Management</h5>
-          <ul class="py-3 flex flex-col gap-1">
-            <NuxtLink v-for="m in systemMenu" :key="m.name" :href="m.route">
-              <li
-                class="cursor-pointer w-full rounded-lg py-2 px-3 flex items-center gap-2.5 hover:bg-white/10 duration-300 ease-out"
-                :class="{
-                  'bg-gray-100 dark:bg-white/5': m.route.toLowerCase() == route.path.toLowerCase(),
-                }"
-              >
-                <component
-                  :is="m.icon"
-                  class="size-5! text-gray-700 dark:text-white"
-                  :class="{ 'text-blue-700!': m.route.toLowerCase() == route.path.toLowerCase() }"
-                />
-                <span
-                  class="text-xs font-normal text-gray-800 dark:text-gray-200 leading-snug"
-                  :class="{ 'font-semibold': m.route.toLowerCase() == route.path.toLowerCase() }"
-                >
-                  {{ capitalize(m.name) }}
-                </span>
-              </li>
-            </NuxtLink>
-          </ul>
-        </section>
+        <MenuNav />
 
         <div class="absolute inset-x-0 bottom-4 mx-3.5">
           <div class="py-1.5 px-2 bg-gray-100 dark:bg-white/5 rounded-xl flex items-center gap-2.5">
@@ -181,7 +129,6 @@ import IconServer from '~/assets/icons/server.svg';
 
 import packageJson from '../../package.json';
 
-import { capitalize } from 'vue';
 import NotificationBell from '~/components/NotificationBell.vue';
 
 const VERSION = packageJson.version;
