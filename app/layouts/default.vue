@@ -2,7 +2,7 @@
   <main
     class="flex w-screen h-screen bg-gray-100 dark:bg-black/90 p-1.5 transition-colors duration-200 ease-out m-0!"
   >
-    <div class="flex flex-col gap-3 w-[250px] max-w-[250px]">
+    <div class="flex flex-col gap-3 w-62,5 max-w-62.5">
       <nav
         class="relative grow flex flex-col pt-3 px-4 bg-white dark:bg-bg-secondary border border-black/8 dark:border-white/8 rounded-2xl"
       >
@@ -17,7 +17,7 @@
                 SVI HR System
               </h5>
               <p class="text-[10px] dark:text-gray-300 font-light leading-snug">
-                Fast, modern plaform
+                Fast, modern operation
               </p>
             </div>
           </div>
@@ -117,26 +117,20 @@
 import IconLight from '~/assets/icons/light.svg';
 import IconDark from '~/assets/icons/dark.svg';
 import IconSVI from '~/assets/icons/logo.svg';
-import IconHome from '~/assets/icons/home.svg';
-import IconEmployee from '~/assets/icons/multi-user.svg';
-import IconAttendance from '~/assets/icons/attendance.svg';
-import IconDoc from '~/assets/icons/doc.svg';
-import IconUser from '~/assets/icons/user.svg';
-import IconKeys from '~/assets/icons/keys.svg';
-import IconSetting from '~/assets/icons/setting-config.svg';
 import IconLogout from '~/assets/icons/logout.svg';
 import IconServer from '~/assets/icons/server.svg';
 
 import packageJson from '../../package.json';
 
 import NotificationBell from '~/components/NotificationBell.vue';
+import { useLocalStore } from '~/hooks/useLocalStore';
 
 const VERSION = packageJson.version;
 
 type ThemeMode = 'light' | 'dark';
 const themeMode = ref<ThemeMode>('light');
 
-const route = useRoute();
+const { getLocalData, updateLocalData } = useLocalStore<string>();
 
 useHead({
   htmlAttrs: {
@@ -144,75 +138,20 @@ useHead({
   },
 });
 
-const featureMenu = [
-  {
-    name: 'Dashboard',
-    icon: IconHome,
-    route: '/dashboard',
-    children: [],
-  },
-  {
-    name: 'Employees',
-    icon: IconEmployee,
-    route: '/employees',
-    children: [],
-  },
-  {
-    name: 'Attendance',
-    icon: IconAttendance,
-    route: '/attendance',
-    children: [],
-  },
-  {
-    name: 'Leave Request',
-    icon: IconDoc,
-    route: '/leave-request',
-    children: [],
-  },
-];
-
-const systemMenu = [
-  {
-    name: 'User Control',
-    icon: IconUser,
-    route: '/user-control',
-    children: [],
-  },
-  {
-    name: 'Role & Permission',
-    icon: IconKeys,
-    route: '/role-permission',
-    children: [],
-  },
-  {
-    name: 'System Configuration',
-    icon: IconSetting,
-    route: '/configuration',
-    children: [],
-  },
-];
-
 onMounted(() => {
   //-- Load the OS theme preference
   const osThemeMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const osMode = osThemeMode ? 'dark' : 'light';
-  themeMode.value = osMode;
+
+  const localSavedTheme = getLocalData('themeMode');
+  const localMode = localSavedTheme === 'dark' ? 'dark' : 'light';
+
+  themeMode.value = localMode || osMode;
 });
 
-watch(
-  themeMode,
-  (mode) => {
-    // if (typeof window !== 'undefined') {
-    //   localStorage.setItem('themeMode', mode);
-    //   const main = document.querySelector('html');
-    //   if (!main) return;
-    //   main.setAttribute('data-theme', themeMode.value);
-    // }
-  },
-  { immediate: true }
-);
-
 function handleToggleTheme() {
+  if (import.meta.server) return;
   themeMode.value = themeMode.value === 'light' ? 'dark' : 'light';
+  updateLocalData('themeMode', themeMode.value);
 }
 </script>
