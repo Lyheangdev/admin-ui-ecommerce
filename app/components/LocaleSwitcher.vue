@@ -10,8 +10,11 @@
     <Transition name="popover" mode="out-in">
       <div
         v-if="isOpen"
-        class="absolute top-full left-0 w-37.5 mt-4 border flex flex-col gap-0.5 p-1 z-50! rounded-md"
-        :class="['bg-white border-gray-200!', 'dark:bg-white/2 dark:border-white/10!']"
+        class="absolute top-full left-0 w-37.5 mt-4 border flex flex-col gap-0.5 p-1 z-50! rounded-md shadow-lg"
+        :class="[
+          'bg-white border-gray-200!',
+          'dark:bg-white/2 backdrop-blur-2xl dark:border-white/10!',
+        ]"
       >
         <button
           v-for="c in supportedLanguages"

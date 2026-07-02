@@ -2,7 +2,7 @@
   <main
     class="flex w-screen h-screen bg-gray-100 dark:bg-black/90 p-1.5 transition-colors duration-200 ease-out m-0!"
   >
-    <div class="flex flex-col gap-3 w-62,5 max-w-62.5">
+    <div class="flex flex-col gap-3 min-w-62.5 w-62.5 max-w-62.5">
       <nav
         class="relative grow flex flex-col pt-3 px-4 bg-white dark:bg-bg-secondary border border-black/8 dark:border-white/8 rounded-2xl"
       >
